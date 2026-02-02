@@ -56,6 +56,16 @@ anotherConfiguration.AccessKeyID = "ACCESS_KEY_ID"
 anotherConfiguration.SecretAccessKey = "SECRET_ACCESS_KEY"
 ```
 
+通过 SecurityToken 来创建 Config。
+```go
+configuration, _ := config.NewWithSecurityToken("ACCESS_KEY_ID", "SECRET_ACCESS_KEY", "Security_Token")
+
+anotherConfiguration := config.NewDefault()
+anotherConfiguration.AccessKeyID = "ACCESS_KEY_ID"
+anotherConfiguration.SecretAccessKey = "SECRET_ACCESS_KEY"
+anotherConfiguration.SecurityToken = "Security_Token"
+```
+
 下面的代码从默认路径 `~/.qingstor/config.yaml` 读取配置信息来创建 Config。
 
 ```go

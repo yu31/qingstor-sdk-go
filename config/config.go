@@ -37,6 +37,7 @@ import (
 type Config struct {
 	AccessKeyID     string `yaml:"access_key_id"`
 	SecretAccessKey string `yaml:"secret_access_key"`
+	SecurityToken   string `yaml:"-"` // The SecurityToken needs to be dynamically obtained
 
 	Host     string `yaml:"host"`
 	Port     int    `yaml:"port"`
@@ -112,6 +113,16 @@ func New(accessKeyID, secretAccessKey string) (c *Config, err error) {
 	c.AccessKeyID = accessKeyID
 	c.SecretAccessKey = secretAccessKey
 
+	return
+}
+
+func NewWithSecurityToken(accessKeyID, secretAccessKey, token string) (c *Config, err error) {
+	c, err = New(accessKeyID, secretAccessKey)
+	if err != nil {
+		c = nil
+		return
+	}
+	c.SecurityToken = token
 	return
 }
 

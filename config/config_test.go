@@ -94,6 +94,17 @@ func TestNewDefault(t *testing.T) {
 }
 
 func TestNew(t *testing.T) {
+	config, err := NewWithSecurityToken("AccessKeyID", "SecretAccessKey", "SecurityToken")
+	assert.Nil(t, err)
+
+	assert.Equal(t, "AccessKeyID", config.AccessKeyID)
+	assert.Equal(t, "SecretAccessKey", config.SecretAccessKey)
+	assert.Equal(t, "SecurityToken", config.SecurityToken)
+	assert.Equal(t, "https", config.Protocol)
+	assert.Equal(t, "qingstor.com", config.Host)
+}
+
+func TestNewWithSecurityToken(t *testing.T) {
 	config, err := New("AccessKeyID", "SecretAccessKey")
 	assert.Nil(t, err)
 

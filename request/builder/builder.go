@@ -428,5 +428,9 @@ func (qb *Builder) setupHeaders(httpRequest *http.Request) error {
 		httpRequest.Header.Set("Content-MD5", base64.StdEncoding.EncodeToString(md5Value[:]))
 	}
 
+	if qb.operation.Config.SecurityToken != "" {
+		httpRequest.Header.Set("X-QS-Security-Token", qb.operation.Config.SecurityToken)
+	}
+
 	return nil
 }

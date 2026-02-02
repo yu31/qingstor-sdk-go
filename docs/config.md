@@ -55,6 +55,16 @@ anotherConfiguration.AccessKeyID = "ACCESS_KEY_ID"
 anotherConfiguration.SecretAccessKey = "SECRET_ACCESS_KEY"
 ```
 
+Create configuration from SecurityToken
+```go
+configuration, _ := config.NewWithSecurityToken("ACCESS_KEY_ID", "SECRET_ACCESS_KEY", "Security_Token")
+
+anotherConfiguration := config.NewDefault()
+anotherConfiguration.AccessKeyID = "ACCESS_KEY_ID"
+anotherConfiguration.SecretAccessKey = "SECRET_ACCESS_KEY"
+anotherConfiguration.SecurityToken = "Security_Token"
+```
+
 Load user configuration
 
 ```go
@@ -89,3 +99,6 @@ customConfiguration.HTTPSettings.WriteTimeout = 2 * time.Minute
 // Re-initialize the client to take effect
 customConfiguration.InitHTTPClient()
 ```
+
+
+
